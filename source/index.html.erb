@@ -1,0 +1,55 @@
+---
+pageable: true
+per_page: 10
+---
+
+
+<div class="row">
+  <% page_articles.each_with_index do |article, i| %>
+    <h2 class="text-center"><%= link_to article.title, article, :class=>"text-center", :style=>"font-size: 30px" %></h2>
+    
+    <div class="col-sm-6 col-md-2">
+      <center>
+
+        <%# image_tag "mypic.jpg", :size => "75x75", :alt => "Arthur", :class=> "img-circle" %>
+        <img src="images/mypic.jpg" height="75" width="75" class="img-circle">
+        <br/>
+        <a class="text-info tx-md" href="#"><i class="fa fa-twitter">@youcodeio</i></a><br/>
+        <span><%= article.date.strftime('%b %e %Y') %></i>
+      </center> 
+    </div>
+
+    <div class="col-sm-6 col-md-10">
+
+      <p><%= article.body %></p>
+      <!--<p>
+        <%= article.body %>
+      </p>-->
+      <% blog.tags.each do |tag, articles| %>
+        <%= link_to tag, tag_path(tag), :class=>"label label-success" %>
+      <% end %>
+      <a href="#" class="pull-right label label-danger">More <i class="fa fa-arrow-circle-o-right"></i></a>
+      <br/><br/><br/><br/>
+    </div>
+    
+  <% end %>
+
+</div>
+<hr>
+  
+  <div class="row">
+    <center><% if paginate && num_pages > 1 %>
+    <p>Page <%= page_number %> of <%= num_pages %></p> 
+    <% end %></center>
+      <ul class="pager">
+        <li class="previous">
+          <% if prev_page %>
+            <%= link_to 'Previous', prev_page %>
+          <% end %>
+        </li>
+        <li class="next">
+          <%= link_to 'Next page', next_page %>
+        </li>
+      </ul>
+  </div>
+

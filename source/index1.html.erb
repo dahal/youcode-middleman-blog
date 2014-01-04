@@ -1,0 +1,38 @@
+---
+title: YouCode.io - Blog - Screencasts for - Ruby on Rails AnguarJS BackboneJS EmberJS NodeJS and others.
+pageable: true
+per_page: 5
+---
+
+    <div class="col-md-8 col-md-offset-2" style="padding: 100px 0px 100px 0px;">
+      
+        <% page_articles.each_with_index do |article, i| %>
+        <div class="row">
+          <div class="col-md-9">
+            <%= link_to article.title, article, :class=>"text-midnight", :style=>"font-size: 23px" %><br/>
+            <span>By <a class="small" href ="http://twitter.com/youcodeio"><i class="text-primary fa fa-twitter"> youcodeio</i></a></span>
+          </div>
+          <div class="col-md-3"><i class="fa fa-calendar text-danger"></i>  <%= article.date.strftime('%b %e %Y') %></div>
+          </div><hr>
+        <% end %>
+      
+      
+
+      <div class="row">
+        <center><% if paginate && num_pages > 1 %>
+        <p>Page <%= page_number %> of <%= num_pages %></p> 
+        <% end %></center>
+          <ul class="pager">
+            <li class="previous">
+              <% if prev_page %>
+                <%= link_to 'Previous', prev_page %>
+              <% end %>
+            </li>
+            <li class="next">
+              <%= link_to 'Next page', next_page %>
+            </li>
+          </ul>
+      </div>
+    </div>
+
+
